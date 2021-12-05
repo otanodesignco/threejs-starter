@@ -129,6 +129,23 @@ window.addEventListener('resize', () =>
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 10)
 camera.position.z = 2
+
+/**
+ * use if you need pixel alignment with images for shader effects
+ * 
+ */
+
+// const cameraOpts = {
+//     position: 600,
+//     near: 100,
+//     far: 2000,
+//     fov: 2 * Math.atan( (sizes.height / 2) / this.position ) * (180 / Math.PI )
+// }
+
+camera.position.z = cameraOpts.position
+camera.near = cameraOpts.near
+camera.far = cameraOpts.far
+camera.fov = cameraOpts.fov
 scene.add(camera)
 
 // Controls
