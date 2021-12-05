@@ -1,0 +1,11 @@
+Model Information:
+* title:	Runic Book - Hand Painted PBR
+* source:	https://sketchfab.com/3d-models/runic-book-hand-painted-pbr-d55e2e7a829242f084004ebe92452b4f
+* author:	Adam Tabone (https://sketchfab.com/Adamoo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Runic Book - Hand Painted PBR" (https://sketchfab.com/3d-models/runic-book-hand-painted-pbr-d55e2e7a829242f084004ebe92452b4f) by Adam Tabone (https://sketchfab.com/Adamoo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
