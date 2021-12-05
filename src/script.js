@@ -142,10 +142,10 @@ camera.position.z = 2
 //     fov: 2 * Math.atan( (sizes.height / 2) / this.position ) * (180 / Math.PI )
 // }
 
-camera.position.z = cameraOpts.position
-camera.near = cameraOpts.near
-camera.far = cameraOpts.far
-camera.fov = cameraOpts.fov
+// camera.position.z = cameraOpts.position
+// camera.near = cameraOpts.near
+// camera.far = cameraOpts.far
+// camera.fov = cameraOpts.fov
 scene.add(camera)
 
 // Controls
