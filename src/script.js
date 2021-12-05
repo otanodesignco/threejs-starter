@@ -42,7 +42,7 @@ particalMaterial.transparent = true
 particalMaterial.alphaMap = starPartical
 particalMaterial.depthWrite = false
 particalMaterial.blending = THREE.AdditiveBlending
-particalMaterial.color = new THREE.Color('#B0AC33')
+particalMaterial.color = new THREE.Color('#C58847')
 
 
 const particles = new THREE.Points(particalShape,particalMaterial)
@@ -54,6 +54,40 @@ const modelLoader = new GLTFLoader()
 let mixer2 = null
 let mixer = null
 
+// modelLoader.load('/models/viking_book/scene.gltf', (gltf) => {
+//     gltf.scene.scale.set(0.005,0.005,0.005)
+//     gltf.scene.rotateOnAxis(bookAxis, -0.5)
+//     // gltf.scene.translateZ(-2.5)
+//     // gltf.scene.translateY(-2)
+//     // gltf.scene.translateX(-4.3)
+
+//     scene.add(gltf.scene)
+
+//     // mixer = new THREE.AnimationMixer(gltf.scene)
+//     // const action = mixer.clipAction(gltf.animations[0])
+//     // action.play()
+
+// }, undefined, (error) => {
+//     console.error(error)
+// })
+
+// modelLoader.load('/models/magic_ring_-_green/scene.gltf', (gltf) => {
+//     gltf.scene.rotateOnAxis(circleAxis, 3)
+//     gltf.scene.scale.set(0.6,0.6,0.6)
+//     gltf.scene.translateY(-1.5)
+
+//     scene.add(gltf.scene)
+//     console.log(gltf.scene)
+
+//     mixer2 = new THREE.AnimationMixer(gltf.scene)
+//     const action2 = mixer2.clipAction(gltf.animations[0])
+//     action2.play()
+
+// }, undefined, ( error ) => {
+    
+// })
+
+// yellow book
 modelLoader.load('/models/magic_tome/scene.gltf', (gltf) => {
     gltf.scene.scale.set(0.002,0.002,0.002)
     gltf.scene.rotateOnAxis(bookAxis, 0.7)
@@ -68,15 +102,13 @@ modelLoader.load('/models/magic_tome/scene.gltf', (gltf) => {
 }, undefined, (error) => {
     console.error(error)
 })
-
-
-
 modelLoader.load('/models/magic-ring/scene.gltf', (gltf) => {
     gltf.scene.rotateOnAxis(circleAxis, 0.2)
     gltf.scene.scale.set(0.6,0.6,0.6)
     gltf.scene.translateY(-1.5)
 
     scene.add(gltf.scene)
+    console.log(gltf.scene)
 
     mixer2 = new THREE.AnimationMixer(gltf.scene)
     const action2 = mixer2.clipAction(gltf.animations[0])
@@ -164,7 +196,10 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ReinhardToneMapping;
+renderer.physicallyCorrectLights = true
+
 const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
 /**
  * Animate
  */
