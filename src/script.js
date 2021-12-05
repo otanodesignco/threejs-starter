@@ -27,7 +27,7 @@ const positions = new Float32Array(count * 3)
 
 for( let i = 0; i < count * 3; i++)
 {
-    positions[i] = (Math.random() - 0.5) * 2.5
+    positions[i] = (Math.random() - 0.5) * 2.2
     particalShape.setAttribute(
         'position',
         new THREE.BufferAttribute(positions, 3)
@@ -42,7 +42,7 @@ particalMaterial.transparent = true
 particalMaterial.alphaMap = starPartical
 particalMaterial.depthWrite = false
 particalMaterial.blending = THREE.AdditiveBlending
-particalMaterial.color = new THREE.Color(0xffffa7)
+particalMaterial.color = new THREE.Color('#B0AC33')
 
 
 const particles = new THREE.Points(particalShape,particalMaterial)
@@ -51,18 +51,25 @@ scene.add(particalGroup)
 
 const modelLoader = new GLTFLoader()
 
-modelLoader.load('/models/magic-book/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(3,3,3)
-    gltf.scene.rotateOnAxis(bookAxis, -0.6)
-    gltf.scene.translateZ(0.4)
+let mixer2 = null
+let mixer = null
+
+modelLoader.load('/models/magic_tome/scene.gltf', (gltf) => {
+    gltf.scene.scale.set(0.002,0.002,0.002)
+    gltf.scene.rotateOnAxis(bookAxis, 0.7)
+    //gltf.scene.translateZ(0.4)
 
     scene.add(gltf.scene)
+
+    mixer = new THREE.AnimationMixer(gltf.scene)
+    const action = mixer.clipAction(gltf.animations[0])
+    action.play()
 
 }, undefined, (error) => {
     console.error(error)
 })
 
-let mixer = null
+
 
 modelLoader.load('/models/magic-ring/scene.gltf', (gltf) => {
     gltf.scene.rotateOnAxis(circleAxis, 0.2)
@@ -71,9 +78,9 @@ modelLoader.load('/models/magic-ring/scene.gltf', (gltf) => {
 
     scene.add(gltf.scene)
 
-    mixer = new THREE.AnimationMixer(gltf.scene)
-            const action = mixer.clipAction(gltf.animations[0])
-            action.play()
+    mixer2 = new THREE.AnimationMixer(gltf.scene)
+    const action2 = mixer2.clipAction(gltf.animations[0])
+    action2.play()
 
 }, undefined, ( error ) => {
     
@@ -158,6 +165,11 @@ const tick = () =>
     if(mixer)
     {
         mixer.update(deltaTime)
+    }
+
+    if(mixer2)
+    {
+        mixer2.update(deltaTime)
     }
 
     // Update objects
